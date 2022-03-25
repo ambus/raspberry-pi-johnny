@@ -1,0 +1,62 @@
+{
+  "root": "packages/magnetic-sensor-switch-service",
+  "sourceRoot": "packages/magnetic-sensor-switch-service/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/magnetic-sensor-switch-service",
+        "main": "packages/magnetic-sensor-switch-service/src/main.ts",
+        "tsConfig": "packages/magnetic-sensor-switch-service/tsconfig.app.json",
+        "assets": [
+          "packages/magnetic-sensor-switch-service/src/assets"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "packages/magnetic-sensor-switch-service/src/environments/environment.ts",
+              "with": "packages/magnetic-sensor-switch-service/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "magnetic-sensor-switch-service:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "packages/magnetic-sensor-switch-service/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/packages/magnetic-sensor-switch-service"
+      ],
+      "options": {
+        "jestConfig": "packages/magnetic-sensor-switch-service/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
